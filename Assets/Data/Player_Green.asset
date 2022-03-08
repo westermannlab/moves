@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bc9b8e97edc4634995c607c4f9ea61, type: 3}
+  m_Name: Player_Green
+  m_EditorClassIdentifier: 
+  PlayerName: Green
+  Personality: {fileID: 11400000, guid: ce1c03d333d4844b6b3bfd9b22bf5d3d, type: 2}
+  Identifier: c0
+  Color: {r: 0, g: 0.75, b: 0, a: 1}
+  SoftColor: {r: 0.46941173, g: 0.95, b: 0.46941173, a: 1}
+  SoulPrefab: {fileID: 2373005429074134210, guid: 7b0c56dc00bb347bcaaefdb855cf15a4, type: 3}
+  SoulGradient:
+    serializedVersion: 2
+    key0: {r: 0.30549017, g: 0.95, b: 0.30549017, a: 1}
+    key1: {r: 0, g: 0.6, b: 0, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  PlayerId: 0
+  ColorId: 3
+  BlendOffset: {x: 0, y: 1}
+  Music: {fileID: 11400000, guid: 027ae0fd50a8444a596be2e0b49040f2, type: 2}
+  Counterpart: {fileID: 11400000, guid: 4e8a330b909f840aba9a000b3ec2f56e, type: 2}
+  CurrentType: 0
+  CanTransferSoul: 1

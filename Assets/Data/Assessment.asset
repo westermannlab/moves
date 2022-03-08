@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec822829c3f63449882ae154a961013c, type: 3}
+  m_Name: Assessment
+  m_EditorClassIdentifier: 
+  Items:
+  - {fileID: 11400000, guid: 5981ca52f3e3943e7ac91442e475a948, type: 2}
+  - {fileID: 11400000, guid: a5a31485232b54745ae07999fb5874df, type: 2}
+  - {fileID: 11400000, guid: 18ed3054b067e4fc28055f1cc3643244, type: 2}
+  - {fileID: 11400000, guid: 5feb1dd03f0f0409aa63e414a7012295, type: 2}
+  - {fileID: 11400000, guid: ca8216f180e9c433bbe5693d5ff20242, type: 2}

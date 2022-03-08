@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d844cd3dd6344df280b811a75501ef6, type: 3}
+  m_Name: Pool
+  m_EditorClassIdentifier: 
+  Prefabs:
+  - Prefab: {fileID: 4082573162885649921, guid: 1996b406412a84aaa9b7e88e7c6cd54e, type: 3}
+    InitialAmount: 64
+    MaxAmount: 64
+  - Prefab: {fileID: 501336081914000265, guid: 6ab89770c84f04c8f96887f736da3300, type: 3}
+    InitialAmount: 16
+    MaxAmount: 16
+  - Prefab: {fileID: 2970273079183411136, guid: be35a759d9f3c455192df7c4f9d96d04, type: 3}
+    InitialAmount: 256
+    MaxAmount: 256
+  - Prefab: {fileID: 7111003473547327230, guid: ac904d793482d4ad1bef36f3d0071e95, type: 3}
+    InitialAmount: 2
+    MaxAmount: 2
+  - Prefab: {fileID: 4333760774859010856, guid: 4e8f1e983a7504117afd495b0df19fbd, type: 3}
+    InitialAmount: 16
+    MaxAmount: 16
+  - Prefab: {fileID: 6977711153747644995, guid: 5f611383aea5e420891636ca84de232b, type: 3}
+    InitialAmount: 8
+    MaxAmount: 8
+  - Prefab: {fileID: 4939775569693975118, guid: 09088c5719b6b4bfaa7c0a3f44730807, type: 3}
+    InitialAmount: 256
+    MaxAmount: 273
+  - Prefab: {fileID: 349952872360727963, guid: fd095dafdc9bc4defa461560eb01561a, type: 3}
+    InitialAmount: 8
+    MaxAmount: 12
+  - Prefab: {fileID: 2034905259927483400, guid: b64d3d610453f441aa30f8568f31f989, type: 3}
+    InitialAmount: 4
+    MaxAmount: 4
+  - Prefab: {fileID: 800075400394824496, guid: 159f1efc9a0e1487eb23a892ddf4485d, type: 3}
+    InitialAmount: 64
+    MaxAmount: 76
+  - Prefab: {fileID: 6039323823492621641, guid: 4e329f162e40342c3a0697eab7cf5690, type: 3}
+    InitialAmount: 8
+    MaxAmount: 8
+  - Prefab: {fileID: 3740389714423244630, guid: 1573bf0d4b8a141cd8d1bb2fc69fd99d, type: 3}
+    InitialAmount: 2
+    MaxAmount: 2
+  - Prefab: {fileID: 7627302912105530996, guid: 74ee433feebcb49e090eebd0274e98d7, type: 3}
+    InitialAmount: 512
+    MaxAmount: 714
+  - Prefab: {fileID: 543343332984020076, guid: 343e728a58b8e4b18a856c79d683db86, type: 3}
+    InitialAmount: 4
+    MaxAmount: 4
+  - Prefab: {fileID: 6498895500360691541, guid: c1d568ca7f4c640068e97fe71d4dc9f4, type: 3}
+    InitialAmount: 4
+    MaxAmount: 4
+  - Prefab: {fileID: 5443857904451206943, guid: 0f1adf3a8374c4d0c9e4c5816c3269a6, type: 3}
+    InitialAmount: 0
+    MaxAmount: 0
+  - Prefab: {fileID: 8737218128117511302, guid: f149eeec221f447799ec530659cb33f5, type: 3}
+    InitialAmount: 4
+    MaxAmount: 4
+  - Prefab: {fileID: 8546717516538529130, guid: 5481f0409712441c38c6d74b04ba9110, type: 3}
+    InitialAmount: 0
+    MaxAmount: 0

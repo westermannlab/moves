@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a1d105e706249db9818f4b51b32263, type: 3}
+  m_Name: Task_Manager
+  m_EditorClassIdentifier: 
+  Tasks:
+  - {fileID: 11400000, guid: 413aec2afd48d46bbaa16a020770b464, type: 2}
+  - {fileID: 11400000, guid: 6c52aee10b9b44e59b4942ac0d32102e, type: 2}
+  - {fileID: 11400000, guid: 1d28765a727be4662a77a22a7a1eb99c, type: 2}
+  - {fileID: 11400000, guid: 149bed465aba847329ff6c6914e853f5, type: 2}
+  - {fileID: 11400000, guid: e14fc95cbdcb24491bff06538c38a092, type: 2}
+  - {fileID: 11400000, guid: 145872466d5c7451ba4e1b0ddfa31c2e, type: 2}
+  - {fileID: 11400000, guid: a4a6ee84214dd4442975881838c6a235, type: 2}
+  - {fileID: 11400000, guid: 4ff0f993a2bd7445e95143dbf1078d12, type: 2}
+  - {fileID: 11400000, guid: 5f3a8382978dd4d1e9ffd784d611f706, type: 2}
+  - {fileID: 11400000, guid: 38a41300eb3cb46aca7619ed5231606c, type: 2}
+  - {fileID: 11400000, guid: 13324c64a98fd4e838e24e438714ef0c, type: 2}
+  - {fileID: 11400000, guid: da2129c7212434723ac39f05b5e10a6b, type: 2}
+  - {fileID: 11400000, guid: f9e5f9596f07343fa9e995cb2e602ffb, type: 2}
+  - {fileID: 11400000, guid: ef2fa9f1bc4da4636bd6e7e0e5361e30, type: 2}
+  - {fileID: 11400000, guid: 5e9ba24f1979b473f8a4c7688f0f65da, type: 2}
+  - {fileID: 11400000, guid: 26752d75cf256495a8c2551edd5a7052, type: 2}
+  - {fileID: 11400000, guid: 73c1d2d553da64f3e96f643a3bd584ae, type: 2}
+  - {fileID: 11400000, guid: 21553b76d20e343498ce45e6180dafde, type: 2}
+  - {fileID: 11400000, guid: 840de26ac3f3d4ec0a475403cbb7c151, type: 2}
+  - {fileID: 11400000, guid: f95906fbeb7dc47d89453a95de7d2281, type: 2}
+  - {fileID: 11400000, guid: 6a7adae022cfc43a2b140debe0733acd, type: 2}
+  - {fileID: 11400000, guid: 2bf90de983c134a2fb6d705d25f2158b, type: 2}
+  TaskTemplate: {fileID: 11400000, guid: 75b988bc7fbbb4e70816b00f9d34bb5d, type: 2}
+  UseTemplate: 1
