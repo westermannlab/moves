@@ -1,0 +1,1 @@
+copy .\moves_Data\StreamingAssets\moves.default.ini .\moves_Data\StreamingAssets\moves.ini

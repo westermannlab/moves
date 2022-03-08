@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21996e2f6e58247249e762a46a96de7e, type: 3}
+  m_Name: Action_Manager
+  m_EditorClassIdentifier: 
+  Boost: {fileID: 11400000, guid: f0e579c33a86344c5aa928f851ce55b8, type: 2}
+  Brake: {fileID: 11400000, guid: a7da1e21a4e694849b4688f2e84fcca7, type: 2}
+  Rain: {fileID: 11400000, guid: f97412f844411499587831f00c030002, type: 2}
+  Shake: {fileID: 11400000, guid: eacd244ae9ea54b0992edaf390a8a851, type: 2}

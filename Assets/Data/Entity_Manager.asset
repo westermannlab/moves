@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0f54451b7174e9b8919df039a73e83, type: 3}
+  m_Name: Entity_Manager
+  m_EditorClassIdentifier: 
+  Cloud: {fileID: 0}
+  Ground: {fileID: 0}
+  Handcar: {fileID: 0}
+  Cart: {fileID: 0}
+  Players:
+  - {fileID: 11400000, guid: b6a6a1f7ca2ed4aa18bd48f410c84b1d, type: 2}
+  - {fileID: 11400000, guid: fda8365ccc36243bc9983597f618a5fd, type: 2}
+  - {fileID: 11400000, guid: 999b4edbeda0a47f0b395a6e168096e2, type: 2}
+  - {fileID: 11400000, guid: e4336072351134d6691a31b2ade2ee7b, type: 2}
+  - {fileID: 11400000, guid: 4e8a330b909f840aba9a000b3ec2f56e, type: 2}
+  - {fileID: 11400000, guid: 681519eeaae1a49eca441e5d593632ce, type: 2}
+  - {fileID: 11400000, guid: fc82e62afe3d440d88473e720fe629de, type: 2}
+  PlayerOne: {fileID: 11400000, guid: b6a6a1f7ca2ed4aa18bd48f410c84b1d, type: 2}
+  PlayerTwo: {fileID: 11400000, guid: 4e8a330b909f840aba9a000b3ec2f56e, type: 2}

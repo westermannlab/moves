@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14be4933b15db44ac978ed7e3a5cf8e0, type: 3}
+  m_Name: Move_Cloud_Right
+  m_EditorClassIdentifier: 
+  Identifier: 
+  CompletionProgress: 0
+  Description: Mit der Wolke nach rechts bewegen
+  TaskType: 1
+  TaskTarget: 2
+  FullText: "Halten Sie die linke Pfeiltaste gedr\xFCckt, um die Wolke nach rechts
+    zu bewegen."
+  Preface: oder
+  TextModule: rechts
+  Conclusion: 
+  PrimaryButtonType: 2
+  SecondaryButtonType: 8
+  Distance: 8
+  ActivationCommand: 
+  CompletionCommand: 

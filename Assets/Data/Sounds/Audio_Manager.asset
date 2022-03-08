@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd855e222e5241058a741ab074d25d7, type: 3}
+  m_Name: Audio_Manager
+  m_EditorClassIdentifier: 
+  MenuTheme: {fileID: 11400000, guid: 6b0677547818243afbec74cf78326cc4, type: 2}
+  PlayerThemes:
+  - {fileID: 11400000, guid: aa263e8d3146e4869a3c3adeff9dc504, type: 2}
+  - {fileID: 11400000, guid: 5a52efd17682b41c7a56f6d834f89dbf, type: 2}
+  - {fileID: 11400000, guid: 027ae0fd50a8444a596be2e0b49040f2, type: 2}
+  - {fileID: 11400000, guid: 2a15f3540b2e24453a34a6d225d756e0, type: 2}
+  - {fileID: 11400000, guid: 27dd96c15883247eb98793860e525f4e, type: 2}
+  - {fileID: 11400000, guid: edef48ebeff2345118b65481ccde0095, type: 2}
+  - {fileID: 11400000, guid: 9055f0801a1044af884e9edd26d6e1b1, type: 2}
+  Variations:
+  - {fileID: 11400000, guid: aa263e8d3146e4869a3c3adeff9dc504, type: 2}
+  - {fileID: 11400000, guid: 96ae683d612f14db3847fc47c6de98e5, type: 2}
+  - {fileID: 11400000, guid: 413656eaaf35548e68be66b6734a7232, type: 2}
+  - {fileID: 11400000, guid: 413643526c5264cbfb39b6801f76e4f5, type: 2}
+  - {fileID: 11400000, guid: 9e91bb0fb759247a98873d68e6ba6d7c, type: 2}
+  - {fileID: 11400000, guid: aeb33f20342fb462ca74c5957caf9189, type: 2}
+  - {fileID: 11400000, guid: aa263e8d3146e4869a3c3adeff9dc504, type: 2}
