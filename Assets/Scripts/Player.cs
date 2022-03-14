@@ -19,7 +19,7 @@ public class Player : ScriptableObject
    public bool CanTransferSoul;
 
    public string AssessmentCaption;
-   public string AssessmentAdjective;
+   public string AssessmentColor;
 
    private Soul _soul;
    private ControllableObject _currentObject;
@@ -406,9 +406,9 @@ public class Player : ScriptableObject
       }
       else
       {
-         if (!string.IsNullOrEmpty(AssessmentAdjective))
+         if (!string.IsNullOrEmpty(AssessmentColor))
          {
-            return AssessmentAdjective;
+            return AssessmentColor;
          }  
       }
       

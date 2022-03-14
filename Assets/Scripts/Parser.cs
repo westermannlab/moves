@@ -6,7 +6,7 @@ public class Parser : ScriptableObject
 {
     private enum Command { Go, Control, Enter, Leave, Start, Stop, Apply, Release, Toggle, Patrol, Follow, Collect, Hold, Send, Play, Menu, Timer, Time, Fps, Restart, Version, Help, None }
 
-    private enum Argument { On, Off, Red, Orange, Yellow, Green, Blue, Purple, Grey, Cloud, Ground, Handcar, Cart, All, Trigger, Soul, Rain, Shake, Brake, Boost, Companion, Left, Right, Notes, Log, Recorder }
+    private enum Argument { On, Off, Red, Orange, Yellow, Green, Blue, Purple, Grey, Cloud, Ground, Handcar, Cart, All, Trigger, Soul, Rain, Shake, Brake, Boost, Companion, Left, Right, Notes, Log }
     private enum Mode { Set, Show, Hide }
 
     private Mode _mode;
@@ -166,7 +166,7 @@ public class Parser : ScriptableObject
                 case "boost": case "turbo": case "afterburner":
                     _arguments.Add(Argument.Boost);
                     break;
-                case "waffles":
+                case "companion":
                     _arguments.Add(Argument.Companion);
                     break;
                 case "left": case "west": case "l":
@@ -185,9 +185,6 @@ public class Parser : ScriptableObject
                         Controllers.Logs.CreateLogfile();
                         References.Terminal.AddEntry(Controllers.Logs.GetLogfileContents());
                     }
-                    break;
-                case "recorder": case "recording": case "record": case "clip":
-                    _arguments.Add(Argument.Recorder);
                     break;
                 default:
                     float.TryParse(command, NumberStyles.Float, CultureInfo.InvariantCulture, out _value);
@@ -480,10 +477,6 @@ public class Parser : ScriptableObject
                         References.Entities.Handcar.SimulateInput(InputController.Type.Space, InputController.Mode.Hold, _value);
                         References.Terminal.AddEntry("<grey>The handcar ignites its <orange>boost</>." + durationText + "</>");
                     }
-                    else if (_arguments.Contains(Argument.Recorder))
-                    {
-                        // References.Recorder.StartRecording();
-                    }
                     break;
                 case Command.Stop:
                     if (_arguments.Contains(Argument.Rain))
@@ -529,10 +522,6 @@ public class Parser : ScriptableObject
                             _target.StopInputSimulation(-1);
                             References.Terminal.AddEntry("<grey>" + _target.name + " stops.</>");
                         }
-                    }
-                    else if (_arguments.Contains(Argument.Recorder))
-                    {
-                        // References.Recorder.StopRecording();
                     }
                     break;
                 case Command.Apply:
@@ -664,7 +653,7 @@ public class Parser : ScriptableObject
                 case Command.Send:
                     if (_arguments.Contains(Argument.Log))
                     {
-                        Controllers.Logs.SendLogfile();
+                        Controllers.Logs.SaveLogfile();
                     }
                     break;
                 case Command.Play:
@@ -673,19 +662,6 @@ public class Parser : ScriptableObject
                         ProcessCommand(Command.Control);
                         return;
                     }
-                    /*
-                    var clip = References.Recorder.GetClip();
-                    if (clip != null)
-                    {
-                        var speaker = References.Prefabs.GetSpeaker();
-                        speaker.Play(clip, 1f);
-                        References.Terminal.AddEntry("<yellow>Playing most recent recording.</>");
-                    }
-                    else
-                    {
-                        References.Terminal.AddEntry("<red>No recording found.</>");
-                    }
-                    */
                     break;
                 case Command.Menu:
                     if (_arguments.Contains(Argument.On) || _mode == Mode.Show)

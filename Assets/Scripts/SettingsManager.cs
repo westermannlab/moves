@@ -5,7 +5,6 @@ public class SettingsManager : ScriptableObject
     public LevelData MainMenuScene;
     public LevelData DefaultScene;
     public bool TerminalEnabled;
-    public bool RecordingsEnabled;
     public bool CompanionEnabled;
     private float _currentTimeScale = 1f;
 
@@ -13,7 +12,6 @@ public class SettingsManager : ScriptableObject
     {
         var data = References.Io.GetData();
         TerminalEnabled = data.debug == 2;
-        RecordingsEnabled = data.recordings == 1;
         SetFullScreenMode(data.debug != 2);
     }
 

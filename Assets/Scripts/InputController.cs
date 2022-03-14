@@ -177,24 +177,7 @@ public class InputController : MonoBehaviour
                 {
                     ReleaseButton(Type.Show);
                 }
-                /*
-#if !UNITY_WEBGL
-                if (Input.GetButton("Record"))
-                {
-                    _recordFrameCount++;
-                    if (_recordFrameCount == 6)
-                    {
-                        References.Recorder.StartRecording();
-                    }
-                }
 
-                if (Input.GetButtonUp("Record"))
-                {
-                    _recordFrameCount = 0;
-                    References.Recorder.StopRecording();
-                }
-#endif
-                */
                 if (Input.GetButtonDown("Screenshot") || Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     References.Io.SaveScreenshot();

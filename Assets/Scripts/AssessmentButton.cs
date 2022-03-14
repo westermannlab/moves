@@ -4,7 +4,7 @@ public class AssessmentButton : UiElement
 {
     private int _isDownHash = Animator.StringToHash("_IsDown");
 
-    public string Caption;
+    private string _caption;
 
     private AssessmentScreen _parentScreen;
     private Animator _animator;
@@ -21,6 +21,7 @@ public class AssessmentButton : UiElement
         _animator = GetComponentInChildren<Animator>();
         _label = GetComponentInChildren<Label>();
         _label.SetHorizontalAlignment(Label.HorizontalAlignment.Center);
+        _caption = References.Io.GetData().btnConfirm;
     }
     
     private void OnMouseDown()
@@ -71,7 +72,7 @@ public class AssessmentButton : UiElement
     public void Show(float duration)
     {
         ChangeAlpha(1f, duration);
-        UpdateLabel(Caption, duration);
+        UpdateLabel(_caption, duration);
         _isActive = true;
     }
 
