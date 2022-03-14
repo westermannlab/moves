@@ -10,7 +10,6 @@ using UnityEngine.Networking;
 public class LogsController : MonoBehaviour
 {
     private DateTime _programStartTime;
-    private DateTime _uploadDeadline;
     private string _formattedProgramStartTime;
     
     private readonly List<Log> _logs = new List<Log>();
@@ -37,7 +36,6 @@ public class LogsController : MonoBehaviour
         _logFileFolder = Application.persistentDataPath + "/logs";
         _tmpFolder = _logFileFolder + "/tmp";
         _zipFilePath =  Application.persistentDataPath + "/log.zip";
-        _uploadDeadline = new DateTime(2021, 9, 30, 23, 59, 59);
     }
 
     private void Start()
@@ -56,18 +54,10 @@ public class LogsController : MonoBehaviour
         References.Events.CreateLog(log);
     }
     
-    public void SendLogfile()
+    public void SaveLogfile()
     {
         CreateLogfile();
-        if (DateTime.Now < _uploadDeadline)
-        {
-            StartCoroutine(Upload());
-            References.Terminal.AddEntry("<yellow>Logfile sent. <grey>(showing header)<*>\n" + GetHeader());
-        }
-        else
-        {
-            References.Terminal.AddEntry("<red>Unable to send logfile.</>\n<grey>The trial has already been completed.</>");
-        }
+        References.Terminal.AddEntry("<yellow>Logfile saved. <grey>(showing header)<*>\n" + GetHeader());
     }
 
     public void CreateLogfile()
@@ -192,113 +182,5 @@ public class LogsController : MonoBehaviour
     {
         _actionId++;
         return _actionId;
-    }
-
-    private string GetValue(string html, string searchString)
-    {
-        var index = html.IndexOf(searchString, StringComparison.InvariantCulture);
-        var valueStartIndex = index + searchString.Length;
-        var valueEndIndex = html.IndexOf("\"", valueStartIndex, StringComparison.InvariantCulture);
-        var valueLength = valueEndIndex - valueStartIndex;
-        return html.Substring(valueStartIndex, valueLength);
-    }
-
-    private IEnumerator GetHtml()
-    {
-        var www = UnityWebRequest.Get("https://ww2.unipark.de/uc/Forschung_Westermann/02d3/?a=access&b=" + _vp);
-        yield return www.SendWebRequest();
- 
-#pragma warning disable 618
-        if(www.isNetworkError || www.isHttpError)
-        {
-#pragma warning restore 618
-            // Debug.Log(www.error);
-            References.Terminal.AddEntry("<red>Error: </>" + www.error);
-            _hasConnectionError = true;
-            References.Io.HasConnectionError = true;
-        }
-        else {
-            // Show results as text
-            UnityWebRequest.ClearCookieCache();
-            _html = www.downloadHandler.text;
-            _pgCode = GetValue(_html, "name=\"pg_code\" value=\"");
-            _ses = GetValue(_html, "name=\"SES\" value=\"");
-            
-            References.Terminal.AddEntry("<magenta>PG:</> " + _pgCode);
-            References.Terminal.AddEntry("<cyan>SES:</> " + _ses);
-            _hasConnectionError = false;
-            References.Io.HasConnectionError = false;
-
-            // Or retrieve results as binary data
-            // byte[] results = www.downloadHandler.data;
-        }
-    }
-
-    private IEnumerator Upload()
-    {
-        yield return StartCoroutine(GetHtml());
-
-        if (_hasConnectionError)
-        {
-            yield break;
-        }
-        
-        var form = new WWWForm();
-        var now = DateTime.Now;
-        var timestamp = "" + now.Year + '_' + now.Month.ToString("D2") + '_' + now.Day.ToString("D2") + '-' + now.Hour.ToString("D2") + '_' + now.Minute.ToString("D2") + '_' + now.Second.ToString("D2");
-        form.AddField("act", "send");
-        form.AddField("pg_code", _pgCode);
-        form.AddField("SES", _ses);
-        form.AddField("v_11", GetHeader());
-        form.AddField("v_12", "Test-1");
-
-        using (var www = UnityWebRequest.Post("https://ww2.unipark.de/uc/Forschung_Westermann/02d3/ospe.php?qb", form))
-        {
-            yield return www.SendWebRequest();
-
-#pragma warning disable 618
-            if (www.isNetworkError || www.isHttpError)
-#pragma warning restore 618
-            {
-                References.Terminal.AddEntry("<red>Error: </>" + www.error);
-                References.Io.HasConnectionError = true;
-            }
-            else
-            {
-                References.Terminal.AddEntry("<green>Data upload complete!</>");
-                References.Io.HasConnectionError = false;
-            }
-        }
-
-        StartCoroutine(UploadFile());
-    }
-    
-    private IEnumerator UploadFile()
-    {
-        var form = new WWWForm();
-        var logfileBytes = File.ReadAllBytes(_zipFilePath);
-        var now = DateTime.Now;
-        var timestamp = "" + now.Year + '_' + now.Month.ToString("D2") + '_' + now.Day.ToString("D2") + '-' + now.Hour.ToString("D2") + '_' + now.Minute.ToString("D2") + '_' + now.Second.ToString("D2");
-        var url = "https://ww2.unipark.de/uc/Forschung_Westermann/02d3/ospe.php?SES=" + _ses +
-                  "&subAct=runPlugin&pluginData[gpType]=143&pluginData[qId]=9234691&pluginData[action]=upload&pluginData[pgid]=4966045";
-        form.AddBinaryData("uploadFile_9234691", logfileBytes, "log-" + timestamp + ".zip", "application/zip");
-        
-        using (var www = UnityWebRequest.Post(url, form))
-        {
-            yield return www.SendWebRequest();
-
-#pragma warning disable 618
-            if (www.isNetworkError || www.isHttpError)
-#pragma warning restore 618
-            {
-                References.Terminal.AddEntry("<red>Error: </>" + www.error + ".");
-                References.Io.HasConnectionError = true;
-            }
-            else
-            {
-                References.Terminal.AddEntry("<green>File upload complete!</>");
-                References.Io.HasConnectionError = false;
-            }
-        }
     }
 }

@@ -11,6 +11,6 @@ public class LikertScaleData
     {
         return instructions
             .Replace("[CAPTION]", References.Entities.PlayerTwo.GetColorString().ToUpper(CultureInfo.InvariantCulture))
-            .Replace("[ADJECTIVE]", References.Entities.PlayerTwo.GetColorString(true));
+            .Replace("[COLOR]", References.Entities.PlayerTwo.GetColorString(true));
     }
 }

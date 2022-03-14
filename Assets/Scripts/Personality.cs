@@ -51,7 +51,7 @@ public class Personality : ScriptableObject
         ProximityLimit = personality.proximityLimit;
 
         _player.AssessmentCaption = personality.caption;
-        _player.AssessmentAdjective = personality.adjective;
+        _player.AssessmentColor = personality.color;
 
         _lastRoleUpdateTime = -MinTimeBetweenDecisions;
         _lastActionUpdateTime = 0f;

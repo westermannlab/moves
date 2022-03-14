@@ -8,7 +8,6 @@ public class MovesData
     public string[] roomCaptions;
     public float duration;
     public int debug;
-    public int recordings;
     
     public string msgRoomAlreadyCompleted;
     public string msgRoomNotYetAvailable;
@@ -42,6 +41,8 @@ public class MovesData
     public string colorGreen;
     public string colorBlue;
     public string colorPurple;
+
+    public string btnConfirm;
     
     public LikertScaleData[] scales;
 

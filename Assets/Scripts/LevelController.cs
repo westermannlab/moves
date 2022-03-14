@@ -186,7 +186,7 @@ public class LevelController : MonoBehaviour
         References.Io.UpdateAssessmentState(roomId, References.Io.GetAssessmentState(roomId) + 1);
         Controllers.Input.CurrentState = InputController.State.Ended;
         // deactivate for tutorial?
-        Controllers.Logs.SendLogfile();
+        Controllers.Logs.SaveLogfile();
         StartCoroutine(LoadMainMenuRoutine(3f));
     }
 

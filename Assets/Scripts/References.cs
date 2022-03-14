@@ -14,7 +14,6 @@ public class References : MonoBehaviour
     public Pool PoolData;
     public Transform PoolTransform;
     public PrefabManager PrefabManager;
-    public Recorder AudioRecorder;
     public SettingsManager SettingsManager;
     public TaskManager TaskManager;
     public Terminal TerminalObject;
@@ -61,7 +60,6 @@ public class References : MonoBehaviour
     public static Pool Pool => _instance.PoolData;
     public static Transform PoolTf => _instance.PoolTransform;
     public static PrefabManager Prefabs => _instance.PrefabManager;
-    public static Recorder Recorder => _instance.AudioRecorder;
     public static SettingsManager Settings => _instance.SettingsManager;
     public static TaskManager Tasks => _instance.TaskManager;
     public static Terminal Terminal => _instance.TerminalObject;

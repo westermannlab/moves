@@ -3,7 +3,7 @@ public class PersonalityData
 {
     public string playerName;
     public string caption;
-    public string adjective;
+    public string color;
     public bool isActive;
     public int treatAs = -1;
     public float updateRoleInterval = 2f;
