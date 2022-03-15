@@ -19,7 +19,8 @@
 
 <h3>2.1 “version”</h3>
 <p>The version of the <i>moves.ini</i> file. Is intended to facilitate the management of various configurations. Shows up in the log files (see 5. Log files).</p>
-<h3>2.2 “vp”</h3>
+
+<h3 id="2-2-vp">2.2 “vp”</h3>
 <p>The participant’s unique identifier to allow easier allocation of the log files later. Can contain letters, numbers and characters.</p>
 <p>Example:</p>
 <p><code>“vp”: “1”</code></p>
@@ -58,7 +59,7 @@
 <p><strong>“msgRoomAlreadyCompleted”, “msgRoomNotYetAvailable”, …, “colorBlue”, “colorPurple”</strong></p>
 <p>A set of variables that can be used to change various messages, button labels and placeholders.</p>
 
-<h3>2.9 “scales”</h3>
+<h3 id="2-9-scales">2.9 “scales”</h3>
 <p>An array of Likert scales to be filled in after each encounter during evaluation. Each scale consists of a name, an (optional) instruction, and an array of items.</p>
 
 <h4>2.9.1 “name”</h4>
@@ -231,7 +232,7 @@
 <p>Specifying a name of the character only serves to make the file easier to read. Does not get processed by the MOVES program.</p>
 
 <h4>4.2.2 “caption”, “color”</h4>
-<p>The name or description of the player and the player’s color. Can be used inside the evaluation using placeholders (see <a href="2-9-2-instructions">2.9.2 “instructions”</a> and <a href="2-9-4-question">2.9.4 “question”</a>).</p>
+<p>The name or description of the player and the player’s color. Can be used inside the evaluation using placeholders (see <a href="#2-9-2-instructions">2.9.2 “instructions”</a> and <a href="#2-9-4-question">2.9.4 “question”</a>).</p>
 
 <h4>4.2.3 “isActive”</h4>
 <p>A boolean value that determines whether artificial motivation is active (true) or not (false). If the artificial motivation is disabled, the player will not make any automatic decisions.</p>
@@ -309,8 +310,43 @@
 <h2 id="5-log-files">5. Log files</h2>
 <p>As soon as the participant begins an encounter with another player, all relevant actions of both characters are logged in the background until the time expires. Besides enacting and disembodying from objects, movement and collection of notes, the performed actions are logged with some situational context. When running on Windows, the log files are stored at the following path:</p>
 <p><code>C:/Users/[USERNAME]/AppData/LocalLow/arne_sibilis/moves/logs/</code></p>
+<p>After the evaluation is completed, a text file is created that initially contains a range of information:</p>
 
-(...)
+<ul>
+   <li>The version number of the program as well as the version numbers of the files <i>moves.ini, personalities.ini</i> and <i>tutorial.ini</i>.</li>
+   <li>The participant’s identifier (see <a href="#2-2-vp">2.2 “vp”</a>)</li>
+   <li>The index of the completed encounter</li>
+   <li>The number of completions of the encounter so far</li>
+   <li>The operating system used</li>
+   <li>The time of the program start</li>
+   <li>The respective number of keystrokes of the arrow keys and the space bar</li>
+   <li>The duration the arrow keys and the space bar have been held down in total</li>
+   <li>The respective number of enactments of the four objects</li>
+   <li>The time spent controlling each of the four objects</li>
+   <li>The answers to the items of all Likert scales during the evaluation (see <a href="#2-9-scales">2.9 “scales”</a>)</li>
+</ul>
+
+<p>Subsequently, the text file contains all recorded, consecutively numbered actions of the two players in a tabular overview. The columns “begin” and “end” contain the times of initiation and completion of each documented event in seconds since beginning the encounter and serve the chronological classification of the entries. With “agent” the acting player is highlighted, the value “h0” (human 0) stands for the participant, “c0” (computer 0) for the player controlled by the computer. Under “color”, the color of the player can be found for a more precise classification. “State” specifies the enacted object of the acting player at the time of completion of the event (“Pending” indicates the unembodied state as a colored sphere). With “other” it behaves identically, only that here the other player’s enacted object is described. The column “action” contains a differentiated description of the event. An overview of all documentable events follows this summary. The value “act_id” (action identifier) is used to group several movement events in order to simplify their assignment.</p>
+
+<p>The value in the “ending” column reveals information about the circumstance that led to the end of the respective event. In most cases, events end in a natural way (“Natural”), i.e., in direct dependence on the (virtual) input of the player and the specified duration of actions. If the spacebar is held down to perform an action and only released after the action’s resource has been completely exhausted, the action is prematurely aborted (“Exhaustion”). The attempt to execute an action when its resource is completely empty fails, but is also documented (“Unable”). If a note begins to sparkle due to falling rain and is collected during this state, this is also highlighted in the event (“Collect”).</p>
+
+<p>The “target” contains information depending on the event, which will be discussed separately in the following overview. The columns “loc_h0” (location of h0) and “loc_c0” (location of c0) contain the position of both players. Here, [0, 2] corresponds to the center of the room, [-27, -3] to the lower left corner and [27, 7] to the upper right corner. The column “relationship” is intended for the formalized representation of the relationship between the two players. Since that simulation does not yet take place in the present version of MOVES, it always shows the default value [0, 0].</p>
+
+<h3>5.1 Overview of all logged events</h3>
+
+<p>The “Animate” event is created when a player successfully enacts an object. The type of object is specified as “target”. Similarly, “Disembody” documents the disembodiment from a corresponding object. Since both procedures require holding a key for one second, the process can be aborted, which can be traced by means of the events “Cancel Animate” and “Cancel Disembody”. The movements of the players are recorded as “Move” events. For this purpose, the game world is divided into sectors with identifiers derived from the players’ coordinates rounded to integers. For example, the position [-0.6, 2.25] corresponds to the sector [-1, 2]. The moment a player enters a new sector, the movement is registered as an event. The target sector shows up as “target”. Since objects can pass through many sectors in a short time, a unique “action identifier” is assigned to a continuous movement as mentioned. The ground is the only controllable object that cannot be moved, but can be tilted in both directions by up to 15 degrees. Altering the ground’s angle is documented as a “Rotate-To” event when the operation is complete, and the “target” in this case contains the angle. The “Touch Note” entry testifies to the collection of a note by the acting player. The color of the note is recorded as “target”. The same is true for the “Rain On Note” event, which is generated when a note is made to sparkle by falling rain. The entry is created when the note stops sparkling, either when the effect fades or when the note shatters due to contact with the handcar or cart. If, on the other hand, the rain is used to slow down the handcar enacted by the other player, this triggers the “Slowdown Other” event. In this case, the “target” is the affected player. The lightning bolts generated by the thunderstorm after a short time at regular intervals do not fulfill any purpose beyond the angry metaphor in the present version of MOVES, but they still appear as “Emit Thunder” in the log file.</p>
+
+<p>When documenting the execution of actions, the “target” does not matter. Instead, actions are described with respect to the context. The actions are logged in a differentiated manner. The decisive factor here is which behavior the other player shows.</p>
+
+<p>Thus, the use of the cloud’s rain is listed as “Rain” if the opposite side has enacted the handcar when performing the action and moves as such. The handcar shows approach or evocative approach motivation, to which the cloud reacts in an avoiding way. If the handcar stands still while the rain starts, but drives off before it ends, the entry “Rain Undefined” occurs. If both cases do not apply, i.e. the handcar is stationary for the entire duration of the rain or is not enacted at all, the rain is recorded as “Rain Indifferent”.</p>
+
+<p>If the handcar uses its acceleration while rain is falling, this appears in the log file as “Boost Raining”. It does not matter whether the rain hits the handcar or not. On the other hand, if the handcar accelerates while the other player has enacted the ground and is shaking, the performance of the action is recorded as “Boost Shaking”. If the handcar is driving upwards a slope while the ground is not shaking, the entry “Boost Up Slope” is generated. If none of the three conditions are met at the time of the acceleration, but is met when the effect subsides, this is noted as “Boost Undefined”. The ground could, for example, have been tilted in the meantime so that the handcar suddenly drives uphill. This distinction should make it easier to understand whether the other player may have reacted to the action. If none of this applies, the acceleration is simply noted as “Boost”.</p>
+
+<p>If the player has enacted the ground and shakes while the other player is actively moving as the handcar, the “Shake Moving” entry is generated. If the other player has enacted the cart and pulls the brakes while the shaking is triggered, this leads to the “Shake Braked” event. If the handcar starts moving or the cart pulls the brakes while the shaking is active, the log system registers the entry “Shake Undefined”.</p>
+
+<p>If the ground shakes while the cart’s brakes are pulled, this is logged as a “Brake Shaking” event. When the cart brakes while being in motion, whether due to a slope or a moving handcar, a “Brake” entry is made. If the ground forms a flat surface and the cart is stationary when the brake is pulled, the action is recast as an “evocative” jump and is logged as “Brake Jump”. If, on the other hand, the ground starts to incline during the braking process or starts to shake, the event changes to “Brake Undefined”. If none of the above scenarios applies, the “Brake Not Moving” entry is created instead.</p>
+
+<p>At this point, it should be noted that some of the designations listed here do not ideally reflect the situation depicted. This is due to the fact that the “evocative” uses of Rain and Brake were added only towards the end of the development of MOVES in order to grant the four objects behavioral options that are as comparable as possible. In the the course of the program’s future development, a more consistent terminology could certainly be found here.</p>
 
 <h2 id="6-artificial-motivation">6. Artificial motivation tables</h2>
 <p>Below is a detailed overview of all probabilities by which the artificial motivation described in chapter 4 are defined. The probability values for enacting and disembodying from objects are broken down by situation. Only objects that the player can potentially control are considered in the tables. Values highlighted in bold indicate that the corresponding change of enacted object can be performed even if the other player is currently controlling that object. Values in italics describe impossible situations and are listed only for the sake of completeness.</p>
