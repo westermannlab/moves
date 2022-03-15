@@ -66,7 +66,7 @@
 <p>The name of the Likert scale. Displayed above the scale.</p>
 
 <h4 id="2-9-2-instructions">2.9.2 “instructions”</h4>
-<p>Short, optional instructions for filling in the scale. May contain the placeholders <i>“[CAPTION]”</i> and <i>“[COLOR]”</i>, which can be defined individually for each computer-controlled player in the personalities.ini configuration file (see <a href="#5-personalities">chapter 4</a>).</p>
+<p>Short, optional instructions for filling in the scale. May contain the placeholders <i>“[CAPTION]”</i> and <i>“[COLOR]”</i>, which can be defined individually for each computer-controlled player in the personalities.ini configuration file (see <a href="#4-personalities">chapter 4</a>).</p>
 <p>Example:</p>
 <p><code>“You have just met the [COLOR] player [CAPTION].”</code></p>
 <p><i>…may translate into the instruction…</i></p>
