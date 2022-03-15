@@ -1,11 +1,19 @@
 # The MOVES paradigm: a tutorial
+<h4>Table of contents</h4>
+<ul>
+   <li><a href="#1-introduction">1. Introduction</a></li>
+   <li><a href="#2-moves">2. MOVES.INI (Configuration file)</a></li>
+   <li><a href="#3-tutorial">3. TUTORIAL.INI (Configuration file)</a></li>
+</ul>
 
-<h2>1. Introduction</h2>
+
+
+<h2 id="1-introduction">1. Introduction</h2>
 <p>The MOVES paradigm contains the three configuration files <i>moves.ini, tutorial.ini</i> and <i>personalities.ini</i>, which can be used to modify the program and translate it into other languages. The contents of the files are formatted using the JSON format. If they cannot be read due to a syntax error or cannot be found, an error message is displayed in the main menu of MOVES.</p>
 <p>The files can be found in the “StreamingAssets” folder, which is located in the “moves_Data” folder in Windows builds. The configuration options for the three files are described below.</p>
 <p>In the following, the contents of those files are described in detail. In addition, the log files that are created for each encounter are explained and the artificial motivation used is illustrated by means of decision tables.</p>
 
-<h2>2. MOVES.INI (Configuration file)</h2>
+<h2 id="2-moves">2. MOVES.INI (Configuration file)</h2>
 <p>The configuration file moves.ini contains some general settings regarding gameplay, encounter sequence and the evaluation at the end of the encounters. The possible settings are described below.</p>
 
 <h3>2.1 “version”</h3>
@@ -22,7 +30,7 @@
 <p><i>The player will meet the computer-controlled player with personality no. 2 during the first encounter, followed by player no. 1 during the second encounter, followed by players no. 3, 4 and 5.</i></p>
 
 <h3>2.4 “roomVisits”</h3>
-<p>The number of completions of all five encounters and the tutorial. The first value represents the tutorial, the other values correspond to the five encounters. Here, the second value denotes the encounter that is first in the order defined above, the third value denotes the encounter that is second, and so on. If MOVES is operated in default mode (debug=0, see 2.7 “debug”), each encounter can be entered only once.</p>
+<p>The number of completions of all five encounters and the tutorial. The first value represents the tutorial, the other values correspond to the five encounters. Here, the second value denotes the encounter that is first in the order defined above, the third value denotes the encounter that is second, and so on. If MOVES is operated in default mode (debug=0, see <a href="#2-7-debug">2.7 “debug”</a>), each encounter can be entered only once.</p>
 <p>Example:</p>
 <p><code>“roomVisits”: [ 1, 1, 0, 0, 0, 0]</code></p>
 <p><i>The player has completed the tutorial and the first encounter. When the game starts with this setting, the second encounter will be accessible right away.</i></p>
@@ -39,14 +47,14 @@
 <p><code>“duration”: 240.0</code></p>
 <p><i>The encounters last 240 seconds.</i></p>
 
-<h3>2.7 “debug”</h3>
+<h3 id="2-7-debug">2.7 “debug”</h3>
 <p>If the debug value is set to “2” here, MOVES starts in windowed mode and all encounters are accessible at any time. During the encounters, the enter key can be used to open a console that allows various commands to be entered. Entering “help” shows an overview of the most important commands.</p>
 <p>Example:</p>
 <p><code>“debug”: 0</code></p>
 <p><i>MOVES starts in default mode.</i></p>
 
 <h3>2.8 Various messages, labels and placeholders</h3>
-<p>><strong>“msgRoomAlreadyCompleted”, “msgRoomNotYetAvailable”, …, “colorBlue”, “colorPurple”</strong></p>
+<p><strong>“msgRoomAlreadyCompleted”, “msgRoomNotYetAvailable”, …, “colorBlue”, “colorPurple”</strong></p>
 <p>A set of variables that can be used to change various messages, button labels and placeholders.</p>
 
 <h3>2.9 “scales”</h3>
@@ -56,7 +64,7 @@
 <p>The name of the Likert scale. Displayed above the scale.</p>
 
 <h4>2.9.2 “instructions”</h4>
-<p>Short, optional instructions for filling in the scale. May contain the placeholders <i>“[CAPTION]”</i> and <i>“[COLOR]”</i>, which can be defined individually for each computer-controlled player in the personalities.ini configuration file (see chapter 4).</p>
+<p>Short, optional instructions for filling in the scale. May contain the placeholders <i>“[CAPTION]”</i> and <i>“[COLOR]”</i>, which can be defined individually for each computer-controlled player in the personalities.ini configuration file (see <a href="#5-personalities">chapter 4</a>).</p>
 <p>Example:</p>
 <p><code>“You have just met the [COLOR] player [CAPTION].”</code></p>
 <p><i>…may translate into the instruction…</i></p>
@@ -105,17 +113,116 @@
 ]</pre></p>
 <p><i>Displays a Likert scale named “Self-report 1”. The placeholder “[COLOR]” in the instructions will be replaced with the color of the computer-controlled player. The scale contains two items, from which the first is titled “Did you enjoy spending time with [CAPTION]?”. The placeholder “[CAPTION]” is replaced with the corresponding value from the personalities.ini configuration file (see chapter 4). The first item’s left-most option is labeled “not at all”, the right-most option is labeled “totally”.</i></p>
 
-<h2>3. TUTORIAL.INI (Configuration file)</h2>
+<h2 id="3-tutorial">3. TUTORIAL.INI (Configuration file)</h2>
 <p>The configuration file tutorial.ini contains the contents of all text boxes along the tasks to be performed by the participants during the tutorial. By editing this file, it is possible to customize the flow of the tutorial, add your own texts, and make translations. The functionality is described below.</p>
 
-(...)
+<h3>3.1 “version”</h3>
+<p>The version of the tutorial.ini file. Is intended to facilitate the management of various configurations. Shows up in the log files (see <a href="#4-log-files">5. Log files</a>).</p>
 
-<h2>4. PERSONALITIES.INI (Configuration file)</h2>
+<h3>3.2 “tasks”</h3>
+<p>An array of objects, each describing a task or the contents of a text box.</p>
+
+<h4>3.2.1 “identifier”</h4>
+<p>May contain a description of the task to improve the file’s readability. Does not get processed by the MOVES program.</p>
+
+<h4>3.2.2 “type”</h4>
+<p>The type of a task. Is specified by a single-digit number. Nine types are available:</p>
+<ul>
+   <li>0: Displays a message (without the further need to perform a task).</li>
+   <li>1: The participant has to move to fulfill the task.</li>
+   <li>2: The participant has to rotate the floor.</li>
+   <li>3: The participant has to enact (“animate”) an object.</li>
+   <li>4: The participant has to leave (“disembody” from) an object.</li>
+   <li>5: The participant has to use the action of an object (e.g., shaking the ground).</li>
+   <li>6: The participant has to collect one or more notes.</li>
+   <li>7: The participant has to press the “tab” key to show the controls.</li>
+   <li>8: The participant has to hover the mouse cursor over the timer to display the remaining time.</li>
+</ul>
+<p>Example</p>
+<p><code>“type”: 3</code></p>
+<p><i>To complete this task, the participant has to enact an object. The type of object (e.g., cart, cloud) is determined by the variable “target”.</i></p>
+
+<h4>3.2.3 “target”</h4>
+<p>The target object to which the task refers. Needs to be specified for task types 1 and 3-6. Seven targets can be defined:</p>
+<ul>
+   <li>0: No target (to be selected if the task does not refer to any specific object).</li>
+   <li>1: Unembodied, spherical form.</li>
+   <li>2: The cloud.</li>
+   <li>3: The ground.</li>
+   <li>4: The handcar.</li>
+   <li>5: The cart.</li>
+   <li>6: All objects (task can be solved using any object).</li>
+</ul>
+<p>Example</p>
+<p><pre>“type”: 1,
+“target”: 4</pre></p>
+<p><i>To complete this task, the participant has to move (type: 1) while having enacted the handcar (target: 4).</i></p>
+
+<h4>3.2.4 “firstButton”, “secondButton”</h4>
+<p>For tasks that require keyboard input, the buttons that need to be pressed are specified here. They are displayed at the bottom of the text box. The information is mandatory for tasks of type 1-5 and 7. The specification of the second key is optional. The following seven keys can be addressed:</p>
+<ul>
+   <li>0: Left arrow key (movement to the left, tilting the ground to the left).</li>
+   <li>1: Upper arrow key (movement upwards, disembodiment from an object).</li>
+   <li>2: Right arrow key (movement to the right, tilting the ground to the right).</li>
+   <li>3: Lower arrow key (movement down, disembodiment from an object).</li>
+   <li>4: Space bar (enacting an object, performing an action).</li>
+   <li>6: Tab key (show controls).</li>
+   <li>8: None (does not get displayed at the bottom of the text box).</li>
+</ul>
+<p>Example</p>
+<p><pre>“type”: 5,
+“target”: 2,
+“firstButton”: 4,
+“secondButton”: 8</pre></p>
+<p><i>To complete this task, the participant has to press the spacebar (firstButton: 4) to perform the action (type: 5) of the cloud (target: 2), that is, the rain.</i></p>
+
+<h4>3.2.5 “text”</h4>
+<p>The contents of the text box and the description of the task. For tasks with multiple objectives (movement in two directions, collection of multiple notes), two or more terms can be placed in curly brackets to visualize the completion of the subtask.</p>
+<p>Example</p>
+<p><pre>“type”: 1,
+“target”: 6,
+“firstButton”: 0,
+“secondButton”: 2,
+“text”: “Move any object {left} and {right}.”</pre></p>
+<p><i>Requires the movement to the left (firstButton: 0) and to the right (secondButton: 2). In the text box, the direction in which the arbitrary object (target: 6) is moved (type: 1) first is highlighted in green to indicate which subtask has already been completed.</i></p>
+
+<h4>3.2.6 “amount”</h4>
+<p>A value that, depending on the type of task, describes its duration, distance, angle or required number:</p>
+<ul>
+   <li>type 0 (message): The duration (in seconds) the message will be displayed.</li>
+   <li>type 1 (move): The distance (in meters) that has to be covered by the objects.</li>
+   <li>type 2 (rotate ground): The required rotation (in degrees, >0, <=15).</li>
+   <li>type 3 (enactment), type 4 (disembodiment): No specification required.</li>
+   <li>type 5 (perform action): The amount of time (in seconds) the space bar must be held down.</li>
+   <li>type 6 (collect note): The number of notes to collect.</li>
+   <li>type 7 (press tab): The duration (in seconds) that the tab key has to be held down (0, so it only has to be pressed once).</li>
+   <li>type 8 (hover over timer): The duration that the mouse cursor has to hover over the timer (0, so that the mouse cursor only has to hover over the timer once).</li>
+</ul>
+<p>Example</p>
+<p><pre>“type”: 0,
+“target”: 0,
+“firstButton”: 8,
+“secondButton”: 8,
+“text”: “This text box will be displayed for 4 seconds.”,
+“amount”: 4.0</pre></p>
+<p><i>Displays a message (type: 0) in a text box without a prompt (firstButton: 8; secondButton: 8) for four seconds (amount: 4.0). After that, the text box is closed and the task is considered completed.</i></p>
+
+<h4>3.2.7 “activationCommands”, “completionCommands”</h4>
+<p>Optional commands that are sent to and processed by the internal console on obtaining or completing the task. Multiple commands can be separated by the string “ \n “ (space, backslash, n, space). For an overview of the commands, please use the “help” function of the console in debug mode (see <a href="#2-7-debug">2.7 “debug”</a> in the description of the configuration file moves.ini). Also allows control of the hidden, computer-controlled player (“grey”) in the tutorial, e.g. to allow the collection of notes.</p>
+<p>Example</p>
+<p><pre>“activationCommands”: “hide notes”,
+“completionCommands”: “show notes 2 \n grey enter cart”</pre></p>
+<p><i>Hides the notes (instantly) when the task is received. After the task is completed, the notes are faded in over 2 seconds and the hidden grey player attempts to enact the cart.</i></p>
+
+<h4>3.2.8 “types”, “targets”, “buttons”</h4>
+<p>Three short summaries of “type”, “target” and “button” mappings within the configuration file. Serves only to give an overview when making adjustments.</p>
+
+<h2 id="4-personalities">4. PERSONALITIES.INI (Configuration file)</h2>
 <p>The configuration file personalities.ini allows to customize the artificial motivation of the computer controlled players.</p>
 
 (...)
 
-<h2>5. Log files</h2>
+<h2 id="5-log-files">5. Log files</h2>
 <p>As soon as the participant begins an encounter with another player, all relevant actions of both characters are logged in the background until the time expires. Besides enacting and disembodying from objects, movement and collection of notes, the performed actions are logged with some situational context. When running on Windows, the log files are stored at the following path:</p>
 <p><code>C:/Users/[USERNAME]/AppData/LocalLow/arne_sibilis/moves/logs/</code></p>
 
